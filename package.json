@@ -1,0 +1,23 @@
+{
+  "name": "threejs-journey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "pet:happy-gao-lab/threejs-journey.git"
+  },
+  "keywords": [],
+  "author": "Happy Gao",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.185.1",
+    "vite": "^8.2.2"
+  }
+}
