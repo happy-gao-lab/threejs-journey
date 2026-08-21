@@ -1,5 +1,13 @@
 import * as THREE from "three";
 
+// https://threejs.org/docs/index.html#Scene
+// https://threejs.org/docs/index.html#BoxGeometry
+// https://threejs.org/docs/index.html#MeshBasicMaterial
+// https://threejs.org/docs/index.html#Color
+// https://threejs.org/docs/#Mesh
+// https://threejs.org/docs/#PerspectiveCamera
+// https://threejs.org/docs/index.html#WebGLRenderer
+
 // Constants
 const sizes = {
   width: 800,
@@ -58,6 +66,7 @@ for (const text of infoItems) {
   p.style.margin = "0 0 8px";
   info.appendChild(p);
 }
+
 info.lastElementChild.style.marginBottom = "0";
 
 canvas.insertAdjacentElement("afterend", info);
