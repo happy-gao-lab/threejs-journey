@@ -87,7 +87,7 @@ const timer = new THREE.Timer();
 // tick();
 
 //! FlyControls
-// const flyControls = new FlyControls(camera, renderer.domElement);
+// const flyControls = new FlyControls(camera, canvas);
 
 // flyControls.movementSpeed = 2;
 // flyControls.rollSpeed = 0.5;
@@ -108,7 +108,7 @@ const timer = new THREE.Timer();
 //! FirstPersonControls
 // const firstPersonControls = new FirstPersonControls(
 //   camera,
-//   renderer.domElement,
+//   canvas,
 // );
 
 // const tick = () => {
@@ -125,55 +125,55 @@ const timer = new THREE.Timer();
 // tick();
 
 //! PointerLockControls is a perfect choice for first person 3D games.
-// const controls = new PointerLockControls(camera, document.body);
+const controls = new PointerLockControls(camera, canvas);
 
 // blocker/instructions are created dynamically instead of hardcoded in index.html,
 // since their visibility needs to be toggled from this script on lock/unlock
-// const blocker = document.createElement("div");
-// blocker.id = "blocker";
-// blocker.style.maxWidth = "800px";
-// blocker.style.maxHeight = "600px";
-// blocker.style.margin = "10px 10px 0";
-// blocker.style.position = "fixed";
-// blocker.style.top = "0px";
-// blocker.style.left = "0px";
-// blocker.style.zIndex = "9999";
+const blocker = document.createElement("div");
+blocker.id = "blocker";
+blocker.style.maxWidth = "800px";
+blocker.style.maxHeight = "600px";
+blocker.style.margin = "10px 10px 0";
+blocker.style.position = "fixed";
+blocker.style.top = "0px";
+blocker.style.left = "0px";
+blocker.style.zIndex = "9999";
 
-// const instructions = document.createElement("div");
-// instructions.id = "instructions";
+const instructions = document.createElement("div");
+instructions.id = "instructions";
 
-// const instructionsText = document.createElement("p");
-// instructionsText.textContent = "Click to play";
-// instructions.appendChild(instructionsText);
+const instructionsText = document.createElement("p");
+instructionsText.textContent = "Click to play";
+instructions.appendChild(instructionsText);
 
-// blocker.appendChild(instructions);
-// document.body.appendChild(blocker);
+blocker.appendChild(instructions);
+document.body.appendChild(blocker);
 
-// instructions.addEventListener("click", () => {
-//   controls.lock();
-// });
+instructions.addEventListener("click", () => {
+  controls.lock();
+});
 
-// controls.addEventListener("lock", () => {
-//   instructions.style.display = "none";
-//   blocker.style.display = "none";
-// });
+controls.addEventListener("lock", () => {
+  instructions.style.display = "none";
+  blocker.style.display = "none";
+});
 
-// controls.addEventListener("unlock", () => {
-//   blocker.style.display = "block";
-//   instructions.style.display = "";
-// });
+controls.addEventListener("unlock", () => {
+  blocker.style.display = "block";
+  instructions.style.display = "";
+});
 
-// const tick = () => {
-//   timer.update();
+const tick = () => {
+  timer.update();
 
-//   renderer.render(scene, camera);
-//   window.requestAnimationFrame(tick);
-// };
+  renderer.render(scene, camera);
+  window.requestAnimationFrame(tick);
+};
 
-// tick();
+tick();
 
 //! OrbitControls - allow the camera to orbit around a target.
-// const controls = new OrbitControls(camera, renderer.domElement);
+// const controls = new OrbitControls(camera, canvas);
 // // controls.update() must be called after any manual changes to the camera's transform
 // camera.position.set(0, 0, 3);
 // controls.update();
@@ -190,7 +190,7 @@ const timer = new THREE.Timer();
 // tick();
 
 //! TrackballControls - is similar to OrbitControls. However, it does not maintain a constant camera up vector. That means if the camera orbits over the “north” and “south” poles, it does not flip to stay "right side up".
-// const controls = new TrackballControls(camera, renderer.domElement);
+// const controls = new TrackballControls(camera, canvas);
 
 // // Unlike OrbitControls, update() here takes no arguments and must be called every
 // // frame unconditionally - there is no separate damping/autoRotate flag to check
@@ -205,7 +205,7 @@ const timer = new THREE.Timer();
 // tick();
 
 //! TransformControls - can be used to transform objects in 3D space by adapting a similar interaction model of DCC tools like Blender. Unlike other controls, it is not intended to transform the scene's camera.
-// const controls = new TransformControls(camera, renderer.domElement);
+// const controls = new TransformControls(camera, canvas);
 // controls.attach(mesh);
 
 // controls itself is not an Object3D (same as StereoCamera) - the visual gizmo
@@ -222,17 +222,17 @@ const timer = new THREE.Timer();
 // tick();
 
 //! DragControls - can be used to provide a drag'n'drop interaction.
-// No update() call is needed - it moves the dragged object directly through its own
-// internal pointer event listeners. Highlighting the dragged object via
-// material.emissive would require a material that supports it (e.g. MeshStandardMaterial),
-// not the MeshBasicMaterial used here.
-new DragControls([mesh], camera, renderer.domElement);
+// // No update() call is needed - it moves the dragged object directly through its own
+// // internal pointer event listeners. Highlighting the dragged object via
+// // material.emissive would require a material that supports it (e.g. MeshStandardMaterial),
+// // not the MeshBasicMaterial used here.
+// new DragControls([mesh], camera, canvas);
 
-const tick = () => {
-  timer.update();
+// const tick = () => {
+//   timer.update();
 
-  renderer.render(scene, camera);
-  window.requestAnimationFrame(tick);
-};
+//   renderer.render(scene, camera);
+//   window.requestAnimationFrame(tick);
+// };
 
-tick();
+// tick();
