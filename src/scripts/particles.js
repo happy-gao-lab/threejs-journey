@@ -7,6 +7,8 @@ const sizes = {
   height: window.innerHeight,
 };
 
+const pixelRatio = Math.min(window.devicePixelRatio, 2);
+
 const canvas = document.getElementById("webgl");
 
 canvas.style.position = "fixed";
@@ -49,7 +51,7 @@ const particlesG = new THREE.BufferGeometry();
 const positions = new Float32Array(count * 3);
 const colors = new Float32Array(count * 3);
 
-for (let i = 0; i < count; i++) {
+for (let i = 0; i < count * 3; i++) {
   positions[i] = (Math.random() - 0.5) * 10;
   colors[i] = Math.random();
 }

@@ -7,6 +7,8 @@ const sizes = {
   height: window.innerHeight,
 };
 
+const pixelRatio = Math.min(window.devicePixelRatio, 2);
+
 const canvas = document.getElementById("webgl");
 
 canvas.style.position = "fixed";
